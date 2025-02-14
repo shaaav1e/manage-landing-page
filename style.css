@@ -90,7 +90,10 @@ svg {
     display: block;
 }
 
-
+input, textarea, select {
+    outline: none;
+    box-shadow: none;
+}
 
 @media (prefers-reduced-motion: reduce) {
     html:focus-within {
@@ -114,7 +117,15 @@ body {
     font-family: var(--ff-body);
     color: var(--clr-neutral-400);
 }
-
+p:not([class])
+{
+    
+    max-width:32ch;
+}
+p[data-width="wide"]
+{
+    max-width:42ch;
+}
 .button {
     border-radius: 100vmax;
     padding: 1.5em 2.5em;
@@ -143,8 +154,48 @@ body {
     background-color: var(--clr-neutral-100);
     color: var(--clr-accent-300);
 }
-
+/* Section Color */
+.info 
+{
+    background-color: var(--clr-accent-400);
+}
+/* need to change paras of above section to white */
+.white
+{
+    color:#fff;
+}
+/* PSUEDO ELEMENT IMAGES */
+.cta
+{
+    position:relative;
+    isolation:isolate;
+    text-align: center;
+}
+.cta::before
+{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image: url("images/bg-tablet-pattern.svg")
+    ,url("images/bg-tablet-pattern.svg");
+    background-position: -10.6rem -5rem, 95rem -42rem;
+    background-repeat: no-repeat;
+    z-index:-1;
+    opacity:0.3;
+}
+@media (min-width:50em)
+{
+    .cta
+    {
+        text-align:left;
+    }
+    .justify-self-end-md
+    {
+        justify-self: end;
+    }
+}
 /* NAVIGATION  */
+
 .primary-header {
     margin-top: var(--size-700);
 }
@@ -208,14 +259,180 @@ body {
         text-align: center;
         font-weight: var(--fw-bold);
     }
-
-
-
     .primary-navigation[data-visible] {
         display: block;
 
     }
 }
+/* FOOTER */
+.footer-nav
+{
+    columns:2;
+    gap: clamp(var(--size-200), 30vw, var(--size-900));
+    /* gap: max(30vw,2rem); */
+}
+.footer-nav a
+{
+    color:var(--clr-neutral-100);
+    text-decoration: none;
+}
+.footer-nav a:hover
+{
+    color:var(--clr-accent-400);
+}
+.footer-img
+{
+    display:flex;
+    flex-direction: row;
+    gap:1rem;
+    margin-top:2em;
+}
+.footer-logo
+{
+   background:var(--clr-neutral-100) ;
+}
+.primary-footer-wrapper
+{
+    display:grid;
+    gap:var(--size-700);
+    grid-template-areas: 
+    'form'
+    'nav'
+    'logo-social'
+    'para';
+}
+.primary-footer-logo
+{
+    grid-area:logo-social;
+    
+    align-items: center;
+    gap:var(--size-700);
+}
+.primary-footer-nav
+{
+    grid-area:nav;
+}
+.mid
+{
+    display:none;
+}
+.primary-footer-form
+{
+    grid-area:form;
+    display:flex;
+    flex-direction: row;
+    gap:var(--size-200);
+}
+.primary-footer-form input[type="email"]
+{
+border-radius:100vw;
+border:0;
+padding:0.2em 0.5em;
+}
+@media(min-width:50em)
+{
+    .primary-footer-wrapper
+    {
+        grid-template-areas: "logo-social nav form";
+    }
+    .primary-footer-logo
+    {
+        align-items: flex-start;
+        justify-content: space-between;
+        gap:var(--size-700);
+    }
+}
+@media (max-width: 50em)
+{
+.primary-footer-wrapper
+{
+    display:grid;
+    grid-template-areas: 
+    'form'
+    'nav'
+    'logo-social'
+    'para'
+    ;
+    gap:3rem;
+}
+    .primary-footer-wrapper > *
+    {
+        outline:2px solid red;
+        margin-inline:auto;
+    }
+    .primary-footer-logo
+    {
+        grid-area: logo-social;
+        display:flex;
+        flex-direction:column-reverse;
+        align-items:center;
+        gap:var(--size-700);
+
+    }
+    .primary-footer-nav
+    {
+        grid-area: nav;
+    }
+    .primary-footer-form
+    {
+        grid-area:form;
+    }
+    .primary-footer-para
+    {
+        grid-area:para;
+    }
+    .mid
+    {
+        display:block;
+    }
+}
+
+/* Slider */
+.testimonial-img {
+    width: 80px; /* Adjust as needed */
+    height: 80px;
+    border-radius: 50%; /* Circular image */
+    margin: 0 auto 10px; /* Centers image & adds spacing */
+    display: block;
+    margin-top:2rem;
+  }
+  .swiper-slide {
+    display: flex;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;  /* Center vertically */
+    height: 100%; /* Full height of the container */
+  }
+  
+  .testimonial-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Center everything inside */
+    justify-content: center;  /* Push content to middle */
+    text-align: center;
+    height: 100%; /* Ensure full height */
+  }
+  
+  .testimonial-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  h3 {
+    margin-bottom: 10px;
+  }
+  
+
+  /* SWIPER JS */
+  .swiper-pagination {
+    position: relative;
+    margin-top: 20px; 
+  }
+  .swiper-button-next::after, .swiper-button-prev::after {
+    color: var(--clr-accent-400); 
+    font-size: 48px; 
+  }
 
 /* UTILITIES */
 
@@ -257,6 +474,18 @@ body {
          (*2) means padding on each side 
      */
     margin-inline: auto;
+}
+.vertical-align-center
+{
+    align-items: center;
+}
+.justify-self-end
+{
+    justify-self: end;
+}
+.text-center
+{
+    text-align: center;
 }
 /* INSTEAD OF MARGIN-TOP USING THIS */
 :where(.flow :not(:first-child)) {
