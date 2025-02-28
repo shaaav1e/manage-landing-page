@@ -357,7 +357,7 @@ padding:0.2em 0.5em;
 }
     .primary-footer-wrapper > *
     {
-        outline:2px solid red;
+        /* outline:2px solid red; */
         margin-inline:auto;
     }
     .primary-footer-logo
