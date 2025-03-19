@@ -1,6 +1,6 @@
 #  Manage Landing Page  
 
-A sleek and responsive landing page built using **HTML, CSS, JavaScript**, and **Swiper.js** for an interactive carousel.  
+A responsive landing page built using **HTML, CSS, JavaScript**
 
 This project was created for **learning purposes**, following various tutorials to enhance CSS skills. 
 
@@ -8,7 +8,7 @@ This project was created for **learning purposes**, following various tutorials 
 - **HTML** 
 - **CSS** 
 - **JavaScript** 
-- **Swiper.js** – Implementing the responsive carousel  
+
 
 ## NETLIFY
 Check out the deployed version on **Netlify**:  
